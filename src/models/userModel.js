@@ -33,6 +33,9 @@ const userSchema = new mongoose.Schema({
 
 })
 
+userSchema.set("timestamps", true);
+userSchema.index({username: 1, email: 1});
+
 const userModel = mongoose.model("user", userSchema);
 
 module.exports = userModel;
