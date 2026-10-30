@@ -24,5 +24,22 @@ musicRouter.post("/upload", authMiddleware.authArtist, upload.single("music"), m
 
 //upload.single("music")-> music is name of the field coloumn that should be given in postman while uploading the file
 
+//Create Album
+musicRouter.post("/album", authMiddleware.authArtist,  musicController.createAlbum);
+
+
+//Get all music
+musicRouter.get("/", authMiddleware.authUser, musicController.getAllMusic);
+
+
+//Get albums
+musicRouter.get("/albums", authMiddleware.authUser, musicController.getAllAlbums);
+
+
+//Get particular album
+
+musicRouter.get("/albums/:albumId", authMiddleware.authUser, musicController.getAlbumById);
+
+
 
 module.exports = musicRouter;
