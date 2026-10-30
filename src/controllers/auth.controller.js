@@ -11,7 +11,7 @@ const bcrypt = require("bcrypt");
 async function registerUser(req, res){
   try{
 
-    const { username, email, password } = req.body;
+    const { username, email, password, role="user" } = req.body;
 
     //Now we will check whether this user already exists or not
     const userAlreadyExists = await userModel.findOne({
@@ -36,6 +36,7 @@ async function registerUser(req, res){
       username,
       email,
       password: hash,
+      role
     });
 
     // We will now assign a token to this user
